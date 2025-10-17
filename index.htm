@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <title>School & Course Search</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="top">
+        <h1>School & Course Search</h1>
+        <p class="subtitle">
+          Search for schools and view course outlines instantly.
+        </p>
+      </header>
+
+      <main class="search-area">
+        <div class="controls">
+          <div class="searchBar">
+            <input id="searchInput" type="text" placeholder="Search schools, courses, or keywords..." aria-label="Search" />
+            <button id="clearBtn" title="Clear">✕</button>
+          </div>
+
+          <div class="toolBar">
+            <label>Country
+              <select id="countryFilter">
+                <option value="">All</option>
+              </select>
+            </label>
+            <label>Or type country
+              <input id="countryInput" type="text" placeholder="e.g. Nigeria" style="margin-left:6px" />
+            </label>
+            <label>Category
+              <select id="categoryFilter" style="margin-left:6px">
+                <option value="">All</option>
+              </select>
+            </label>
+            <label>Page size
+              <select id="pageSize">
+                <option>6</option>
+                <option>9</option>
+                <option>12</option>
+              </select>
+            </label>
+
+            <label class="fileLabel">Upload
+              <input id="fileInput" type="file" accept=".json,.csv" />
+            </label>
+            <button id="loadFileBtn">Load</button>
+            <button id="exportBtn" title="Export current dataset as JSON">Export JSON</button>
+            <button id="downloadTemplateBtn" title="Download CSV/JSON template">Download template</button>
+            <button id="fetchWebBtn" title="Fetch universities from web">Fetch from web</button>
+            <button id="attachStdBtn" title="Attach standard courses">Attach standard courses</button>
+            <button id="importAllBtn" title="Import all countries (experimental)">Import all countries</button>
+            <button id="useSampleBtn" title="Reset to sample">Reset sample</button>
+            <span id="importProgress" style="margin-left:8px; color:#dcd6f7; font-size:.9rem"></span>
+            <span id="fetchStatus" style="margin-left:8px; color:#dcd6f7; font-size:.9rem"></span>
+          </div>
+        </div>
+
+        <div id="results" class="results" aria-live="polite">
+          <!-- results injected here -->
+        </div>
+
+        <div class="pagination" id="pagination">
+          <button id="prevPage">◀ Prev</button>
+          <span id="pageInfo">Page 1</span>
+          <button id="nextPage">Next ▶</button>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <small
+          >Local demo — sample data. For production, connect to a backend or AI
+          service.</small
+        >
+      </footer>
+    </div>
+
+    <!-- Fuse.js for fuzzy search and PapaParse for CSV import -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="real.js"></script>
+  </body>
+</html>
